@@ -37,6 +37,7 @@ import io.vavr.control.*;
  * @deprecated Will be removed in the next major version, along with VAVR's pattern matching, in favor of Java's native pattern matching.
  */
 @Deprecated
+@OnlyModified
 public final class Patterns {
 
     private Patterns() {
