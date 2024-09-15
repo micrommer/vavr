@@ -4,7 +4,7 @@
  *
  * The MIT License (MIT)
  *
- * Copyright 2023 Vavr, https://vavr.io
+ * Copyright 2024 Vavr, https://vavr.io
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -32,7 +32,7 @@ import io.vavr.collection.Seq;
 import io.vavr.Tuple2;
 import io.vavr.collection.List;
 import io.vavr.collection.Vector;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import static io.vavr.API.*;
 import static io.vavr.collection.Stream.rangeClosed;

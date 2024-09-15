@@ -4,7 +4,7 @@
  *
  * The MIT License (MIT)
  *
- * Copyright 2023 Vavr, https://vavr.io
+ * Copyright 2024 Vavr, https://vavr.io
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -28,7 +28,7 @@ package io.vavr;
 
 import io.vavr.collection.List;
 import org.assertj.core.api.Assertions;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 import java.util.AbstractMap;
@@ -164,7 +164,7 @@ public class TupleTest {
     @Test
     public void shouldHashTuple2() {
         final Tuple2<?, ?> t = tuple2();
-        assertThat(t.hashCode()).isEqualTo(Objects.hash(t._1, t._2));
+        assertThat(t.hashCode()).isEqualTo(new AbstractMap.SimpleEntry<>(t._1, t._2).hashCode());
     }
 
     @Test

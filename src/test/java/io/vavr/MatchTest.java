@@ -4,7 +4,7 @@
  *
  * The MIT License (MIT)
  *
- * Copyright 2023 Vavr, https://vavr.io
+ * Copyright 2024 Vavr, https://vavr.io
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -32,7 +32,7 @@ import io.vavr.control.Either;
 import io.vavr.control.Option;
 import io.vavr.control.Option.Some;
 import io.vavr.control.Validation;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 import java.time.Year;
@@ -44,16 +44,17 @@ import static io.vavr.MatchTest_DeveloperPatterns.$Developer;
 import static io.vavr.Patterns.*;
 import static io.vavr.Predicates.*;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class MatchTest {
 
     // -- MatchError
 
-    @Test(expected = MatchError.class)
+    @Test
     public void shouldThrowIfNotMatching() {
-        Match(new Object()).of(
+        assertThrows(MatchError.class, () -> Match(new Object()).of(
                 Case($(ignored -> false), o -> null)
-        );
+        ));
     }
 
     // -- $()

@@ -4,7 +4,7 @@
  *
  * The MIT License (MIT)
  *
- * Copyright 2023 Vavr, https://vavr.io
+ * Copyright 2024 Vavr, https://vavr.io
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -31,13 +31,14 @@ package io.vavr;
 \*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*/
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import io.vavr.control.Try;
 import java.lang.CharSequence;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.concurrent.atomic.AtomicInteger;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class CheckedFunction4Test {
 
@@ -169,10 +170,12 @@ public class CheckedFunction4Test {
         assertThat(md5.getDigestLength()).isEqualTo(16);
     }
 
-    @Test(expected = NoSuchAlgorithmException.class)
+    @Test
     public void shouldUncheckedThrowIllegalState() {
-        final Function4<String, String, String, String, MessageDigest> unchecked = digest.unchecked();
-        unchecked.apply("U", "n", "k", "nown"); // Look ma, we throw an undeclared checked exception!
+        assertThrows(NoSuchAlgorithmException.class, () -> {
+            final Function4<String, String, String, String, MessageDigest> unchecked = digest.unchecked();
+            unchecked.apply("U", "n", "k", "nown"); // Look ma, we throw an undeclared checked exception!
+        });
     }
 
     @Test

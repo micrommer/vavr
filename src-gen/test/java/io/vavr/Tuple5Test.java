@@ -4,7 +4,7 @@
  *
  * The MIT License (MIT)
  *
- * Copyright 2023 Vavr, https://vavr.io
+ * Copyright 2024 Vavr, https://vavr.io
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -37,7 +37,7 @@ import io.vavr.collection.Seq;
 import io.vavr.collection.Stream;
 import java.util.Comparator;
 import java.util.Objects;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class Tuple5Test {
 
@@ -311,8 +311,6 @@ public class Tuple5Test {
         final String expected = "(null, null, null, null, null)";
         assertThat(actual).isEqualTo(expected);
     }
-
-    private Comparator<Tuple5<Integer, Integer, Integer, Integer, Integer>> intTupleComparator = Tuple5.comparator(Integer::compare, Integer::compare, Integer::compare, Integer::compare, Integer::compare);
 
     private Tuple5<Object, Object, Object, Object, Object> createTuple() {
         return new Tuple5<>(null, null, null, null, null);

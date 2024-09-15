@@ -1,8 +1,7 @@
 package io.vavr.collection;
 
 import io.vavr.Tuple2;
-import org.assertj.core.api.Assertions;
-import org.junit.Test;
+import org.junit.jupiter.api.TestTemplate;
 
 import java.math.BigDecimal;
 import java.util.*;
@@ -93,6 +92,20 @@ public class LinkedHashMultimapTest extends AbstractMultimapTest {
                 return LinkedHashMultimap.withSet().of(k1, v1, k2, v2, k3, v3);
             case SORTED_SET:
                 return LinkedHashMultimap.withSortedSet(Comparators.naturalComparator()).of(k1, v1, k2, v2, k3, v3);
+            default:
+                throw new RuntimeException();
+        }
+    }
+
+    @Override
+    protected <K extends Comparable<K>, V> Multimap<K, V> mapOf(K k1, V v1, K k2, V v2) {
+        switch (containerType) {
+            case SEQ:
+                return LinkedHashMultimap.withSeq().of(k1, v1, k2, v2);
+            case SET:
+                return LinkedHashMultimap.withSet().of(k1, v1, k2, v2);
+            case SORTED_SET:
+                return LinkedHashMultimap.withSortedSet(Comparators.naturalComparator()).of(k1, v1, k2, v2);
             default:
                 throw new RuntimeException();
         }
@@ -198,7 +211,7 @@ public class LinkedHashMultimapTest extends AbstractMultimapTest {
 
     // -- narrow
 
-    @Test
+    @TestTemplate
     public void shouldNarrowMap() {
         final LinkedHashMultimap<Integer, Number> int2doubleMap = (LinkedHashMultimap<Integer, Number>) this.<Integer, Number> emptyMap().put(1, 1.0d);
         final LinkedHashMultimap<Number, Number> number2numberMap = LinkedHashMultimap.narrow(int2doubleMap);
@@ -208,19 +221,19 @@ public class LinkedHashMultimapTest extends AbstractMultimapTest {
 
     // -- spliterator
 
-    @Test
+    @TestTemplate
     public void shouldNotHaveSortedSpliterator() {
         assertThat(of(1, 2, 3).spliterator().hasCharacteristics(Spliterator.SORTED)).isFalse();
     }
 
-    @Test
+    @TestTemplate
     public void shouldHaveOrderedSpliterator() {
         assertThat(of(1, 2, 3).spliterator().hasCharacteristics(Spliterator.ORDERED)).isTrue();
     }
 
     // -- isSequential()
 
-    @Test
+    @TestTemplate
     public void shouldReturnTrueWhenIsSequentialCalled() {
         final Multimap<Integer, Integer> map = LinkedHashMultimap.withSeq().of(1, 2, 3, 4);
         assertThat(map.isSequential()).isTrue();

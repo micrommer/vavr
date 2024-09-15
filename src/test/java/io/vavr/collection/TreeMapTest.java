@@ -4,7 +4,7 @@
  *
  * The MIT License (MIT)
  *
- * Copyright 2023 Vavr, https://vavr.io
+ * Copyright 2024 Vavr, https://vavr.io
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -29,7 +29,7 @@ package io.vavr.collection;
 import io.vavr.Serializables;
 import io.vavr.Tuple;
 import io.vavr.Tuple2;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -406,6 +406,7 @@ public class TreeMapTest extends AbstractSortedMapTest {
     // -- obsolete tests
 
     @Override
+    @Test
     public void shouldPreserveSingletonInstanceOnDeserialization() {
         // The empty TreeMap encapsulates a comparator and therefore cannot be a singleton
     }
