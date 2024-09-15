@@ -45,6 +45,7 @@ public final class Patterns {
 
     public static final Pattern0<Tuple0> $Tuple0 = Pattern0.of(Tuple0.class);
 
+    @OnlyModified
     public static <T1, _1 extends T1> Pattern1<Tuple1<T1>, _1> $Tuple1(Pattern<_1, ?> p1) {
         return Pattern1.of(Tuple1.class, p1, io.vavr.$::Tuple1);
     }
